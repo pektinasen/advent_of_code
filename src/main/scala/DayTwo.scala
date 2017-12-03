@@ -11,12 +11,14 @@ object DayTwo {
   }
 
   def minMax(list: List[Int]): (Int, Int) =
-    list.foldLeft((Int.MaxValue, Int.MinValue))(folding _)
+    list.foldLeft((Int.MaxValue, Int.MinValue))(folding)
 
   def solve(sheet: List[List[Int]]): Int = {
     sheet
-      .map(x => {val (y,z) = minMax(x); z - y})
-      .reduce(_ + _)
+      .map(x => {
+        val (y, z) = minMax(x)
+        z - y
+      }).sum
   }
 
   
