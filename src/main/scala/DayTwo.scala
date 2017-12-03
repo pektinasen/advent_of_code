@@ -1,6 +1,6 @@
 object DayTwo {
 
-  def folding(z: Int, mm: (Int, Int)): (Int, Int) = {
+  def folding(mm: (Int, Int), z: Int): (Int, Int) = {
     val (min, max) = mm
     z match {
       case x if x < min && x > max => (x, x)
@@ -11,10 +11,12 @@ object DayTwo {
   }
 
   def minMax(list: List[Int]): (Int, Int) =
-    list.fold((Int.MaxValue, Int.MinValue))((x:Int, mm:(Int, Int)) => folding(x,mm))
+    list.foldLeft((Int.MaxValue, Int.MinValue))(folding _)
 
   def solve(sheet: List[List[Int]]): Int = {
-    ???
+    sheet
+      .map(x => {val (y,z) = minMax(x); z - y})
+      .reduce(_ + _)
   }
 
   
