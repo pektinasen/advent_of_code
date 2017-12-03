@@ -17,7 +17,7 @@ object DayOne {
   }
 
   def main(args: Array[String]): Unit = {
-    val data = scala.io.Source.fromFile("src/main/scala/input.txt").mkString.toList
+    val data = scala.io.Source.fromFile("src/main/scala/day_one_input.txt").mkString.toList
     val result = solve(data)
     println(result)
   }
